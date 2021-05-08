@@ -1,0 +1,39 @@
+dubbo:
+  application:
+    name: warehouse-dubbo  #provider在Nacos中的应用id
+  registry:
+    address: nacos://localhost:8848  #Provider与Nacos通信地址，与spring.cloud.nacos地址一致
+  protocol:
+    id: dubbo
+    name: dubbo
+    port: -1  # dubbo 协议端口（ -1 表示自增端口，从 20880 开始）
+  scan:
+    base-packages: com.kingwarluo.warehouseservice.dubbo  # dubbo 服务扫描基准包
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    jmx:
+      exposure:
+        include: '*'
+    web:
+      exposure:
+        include: '*'
+  server:
+    port: 8081
+
+server:
+  port: 8080  # 应用服务 WEB 访问端口
+
+spring:
+  application:
+    name: warehouse-service
+  cloud:
+    nacos:
+      discovery:
+        namespace: public
+        password: nacos
+        server-addr: localhost:8848  # Nacos 服务发现与注册配置，其中子属性 server-addr 指定 Nacos 服务器主机和端口
+        username: nacos
