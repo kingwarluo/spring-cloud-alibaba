@@ -1,9 +1,9 @@
 server:
-  port: 8080  # 应用服务 WEB 访问端口
+  port: 8081
 
 spring:
   application:
-    name: warehouse-service
+    name: order-service #微服务id
 
 logging: #开启debug日志，仅为学习时使用
   level:

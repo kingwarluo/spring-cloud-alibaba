@@ -18,12 +18,15 @@ public class Stock implements Serializable {
     private String unit; //单位
     private String description; //描述信息
 
-    public Stock(Long skuId, String title, Integer quantity, String unit, String description) {
+    public Stock() {
+
+    }
+
+    public Stock(Long skuId, String title, Integer quantity, String unit) {
         this.skuId = skuId;
         this.title = title;
         this.quantity = quantity;
         this.unit = unit;
-        this.description = description;
     }
 
     public Long getSkuId() {
