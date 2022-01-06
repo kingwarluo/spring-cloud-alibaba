@@ -2,6 +2,7 @@ package com.kingwarluo.gatewayservice.filters;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
@@ -13,6 +14,7 @@ import reactor.core.publisher.Mono;
  * gateway全局计时过滤器
  * 实现了两个过滤器：GlobalFilter, Ordered
  * GlobalFilter是全局过滤器接口，实现类要实现filter()方法进行功能扩展
+ * GatewayFilter局部过滤器
  * Ordered接口用于排序，通过实现getOrder()方法返回整数代表执行当前过滤器的前后顺序
  *
  * @author jianhua.luo
@@ -51,6 +53,8 @@ public class ElapsedFilter implements GlobalFilter, Ordered {
         );
     }
 
+    //设置为最高优先级，最先执行ElapsedFilter过滤器
+    //return Ordered.LOWEST_PRECEDENCE; 代表设置为最低优先级
     @Override
     public int getOrder() {
         return Ordered.HIGHEST_PRECEDENCE;

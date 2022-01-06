@@ -7,7 +7,7 @@ spring:
       discovery:
         username: nacos
         password: nacos
-        server-addr: localhost:8848
+        server-addr: 101.43.122.53:8848
     gateway:
       discovery:
         locator:
@@ -38,13 +38,15 @@ spring:
 #                retries: 3
 #                status: 503
             # 更多过滤器参考 https://docs.spring.io/spring-cloud-gateway/docs/2.2.6.RELEASE/reference/html/#gatewayfilter-factories
-        #第二个路由配置，service-b路由规则
+        #第二个路由配置，path以order开头的路由规则，转发到lb://order-service中
         - id: order_service_route
           uri: lb://order-service
           predicates:
-            - Path=/b/**
+            - Path=/order/**
           filters:
+            # 忽略掉第一层路径转发，这里就是忽略掉/order再转发，1代表1层
             - StripPrefix=1
+            - My=skuName
 
 server:
   port: 8084
