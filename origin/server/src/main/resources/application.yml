@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.43.122.53:8848
+        username: nacos
+        password: nacos
+        namespace: 2da24deb-410a-42db-8826-934fff67a8d1

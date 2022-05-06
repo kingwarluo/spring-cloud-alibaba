@@ -4,7 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.kingwarluo</groupId>
     <artifactId>spring-cloud-alibaba</artifactId>
+    <packaging>pom</packaging>
     <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>origin</module>
+    </modules>
     <name>spring-cloud-alibaba</name>
 
 
